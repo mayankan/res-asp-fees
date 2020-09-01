@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode url="" title="HOME"  description="">
+    <siteMapNode url="http://rainbowschooljp.com/" title="Home"  description="" />
+    <siteMapNode url="http://rainbowschooljp.com/school-management-login-page/" title="School Login"  description="" />
+    <siteMapNode url="http://rainbowschooljp.com/contact/" title="Contact Us"  description="" />
+  </siteMapNode>
+</siteMap>

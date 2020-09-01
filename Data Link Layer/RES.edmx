@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RAINBOWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Left Fees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Month" Type="date" Nullable="false" />
+          <Property Name="AdmissionFee" Type="bigint" Nullable="false" />
+          <Property Name="ExaminationFee" Type="bigint" Nullable="false" />
+          <Property Name="TutionFee" Type="bigint" Nullable="false" />
+          <Property Name="RefreshmentAccFee" Type="bigint" Nullable="false" />
+          <Property Name="LabFee" Type="bigint" Nullable="false" />
+          <Property Name="ProjectFee" Type="bigint" Nullable="false" />
+          <Property Name="AnnualCharges" Type="bigint" Nullable="false" />
+          <Property Name="AdminCharges" Type="bigint" Nullable="false" />
+          <Property Name="SmartClassCharges" Type="bigint" Nullable="false" />
+          <Property Name="ComputerFeeYearly" Type="bigint" Nullable="false" />
+          <Property Name="ComputerFeeMonthly" Type="bigint" Nullable="false" />
+          <Property Name="DevelopmentChargesYearly" Type="bigint" Nullable="false" />
+          <Property Name="TransportFee" Type="bigint" Nullable="false" />
+          <Property Name="LateFee" Type="bigint" Nullable="false" />
+          <Property Name="TotalFee" Type="bigint" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="DateModified" Type="date" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Maintainence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="isOffline" Type="bit" Nullable="false" />
+          <Property Name="HomeNote" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="ModeOfPayment" Type="varchar(max)" Nullable="false" />
+          <Property Name="LeftFeesAmount" Type="bigint" Nullable="false" />
+          <Property Name="LeftfeesId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="isPaid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdmissionNo" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="FathersName" Type="varchar(max)" Nullable="false" />
+          <Property Name="MothersName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Class" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Section" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNumber" Type="bigint" Nullable="false" />
+          <Property Name="Gender" Type="bit" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="DateModified" Type="date" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Payment Details_Left Fees">
+          <End Role="Left Fees" Type="Self.Left Fees" Multiplicity="1" />
+          <End Role="Payment Details" Type="Self.Payment Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Left Fees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment Details">
+              <PropertyRef Name="LeftfeesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment Details_User">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Payment Details" Type="Self.Payment Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment Details">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RAINBOWModelStoreContainer">
+          <EntitySet Name="Left Fees" EntityType="Self.Left Fees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maintainence" EntityType="Self.Maintainence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment Details" EntityType="Self.Payment Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Payment Details_Left Fees" Association="Self.FK_Payment Details_Left Fees">
+            <End Role="Left Fees" EntitySet="Left Fees" />
+            <End Role="Payment Details" EntitySet="Payment Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment Details_User" Association="Self.FK_Payment Details_User">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Payment Details" EntitySet="Payment Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RAINBOWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RAINBOWEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Left_Fees" EntityType="RAINBOWModel.Left_Fee" />
+          <EntitySet Name="Maintainences" EntityType="RAINBOWModel.Maintainence" />
+          <EntitySet Name="Payment_Details" EntityType="RAINBOWModel.Payment_Detail" />
+          <EntitySet Name="Students" EntityType="RAINBOWModel.Student" />
+          <EntitySet Name="sysdiagrams" EntityType="RAINBOWModel.sysdiagram" />
+          <AssociationSet Name="FK_Payment_Details_Left_Fees" Association="RAINBOWModel.FK_Payment_Details_Left_Fees">
+            <End Role="Left_Fee" EntitySet="Left_Fees" />
+            <End Role="Payment_Detail" EntitySet="Payment_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Details_User" Association="RAINBOWModel.FK_Payment_Details_User">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Payment_Detail" EntitySet="Payment_Details" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Left_Fee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Month" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AdmissionFee" Type="Int64" Nullable="false" />
+          <Property Name="ExaminationFee" Type="Int64" Nullable="false" />
+          <Property Name="TutionFee" Type="Int64" Nullable="false" />
+          <Property Name="RefreshmentAccFee" Type="Int64" Nullable="false" />
+          <Property Name="LabFee" Type="Int64" Nullable="false" />
+          <Property Name="ProjectFee" Type="Int64" Nullable="false" />
+          <Property Name="AnnualCharges" Type="Int64" Nullable="false" />
+          <Property Name="AdminCharges" Type="Int64" Nullable="false" />
+          <Property Name="SmartClassCharges" Type="Int64" Nullable="false" />
+          <Property Name="ComputerFeeYearly" Type="Int64" Nullable="false" />
+          <Property Name="ComputerFeeMonthly" Type="Int64" Nullable="false" />
+          <Property Name="DevelopmentChargesYearly" Type="Int64" Nullable="false" />
+          <Property Name="TransportFee" Type="Int64" Nullable="false" />
+          <Property Name="LateFee" Type="Int64" Nullable="false" />
+          <Property Name="TotalFee" Type="Int64" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Payment_Details" Relationship="RAINBOWModel.FK_Payment_Details_Left_Fees" FromRole="Left_Fee" ToRole="Payment_Detail" />
+        </EntityType>
+        <EntityType Name="Maintainence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="isOffline" Type="Boolean" Nullable="false" />
+          <Property Name="HomeNote" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Payment_Detail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="ModeOfPayment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LeftFeesAmount" Type="Int64" Nullable="false" />
+          <Property Name="LeftfeesId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="isPaid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Left_Fees" Relationship="RAINBOWModel.FK_Payment_Details_Left_Fees" FromRole="Payment_Detail" ToRole="Left_Fee" />
+          <NavigationProperty Name="Student" Relationship="RAINBOWModel.FK_Payment_Details_User" FromRole="Payment_Detail" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdmissionNo" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FathersName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MothersName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Section" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="Int64" Nullable="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Payment_Details" Relationship="RAINBOWModel.FK_Payment_Details_User" FromRole="Student" ToRole="Payment_Detail" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Payment_Details_Left_Fees">
+          <End Type="RAINBOWModel.Left_Fee" Role="Left_Fee" Multiplicity="1" />
+          <End Type="RAINBOWModel.Payment_Detail" Role="Payment_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Left_Fee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment_Detail">
+              <PropertyRef Name="LeftfeesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Details_User">
+          <End Type="RAINBOWModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="RAINBOWModel.Payment_Detail" Role="Payment_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment_Detail">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RAINBOWModelStoreContainer" CdmEntityContainer="RAINBOWEntities">
+          <EntitySetMapping Name="Left_Fees">
+            <EntityTypeMapping TypeName="RAINBOWModel.Left_Fee">
+              <MappingFragment StoreEntitySet="Left Fees">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="TotalFee" ColumnName="TotalFee" />
+                <ScalarProperty Name="LateFee" ColumnName="LateFee" />
+                <ScalarProperty Name="TransportFee" ColumnName="TransportFee" />
+                <ScalarProperty Name="DevelopmentChargesYearly" ColumnName="DevelopmentChargesYearly" />
+                <ScalarProperty Name="ComputerFeeMonthly" ColumnName="ComputerFeeMonthly" />
+                <ScalarProperty Name="ComputerFeeYearly" ColumnName="ComputerFeeYearly" />
+                <ScalarProperty Name="SmartClassCharges" ColumnName="SmartClassCharges" />
+                <ScalarProperty Name="AdminCharges" ColumnName="AdminCharges" />
+                <ScalarProperty Name="AnnualCharges" ColumnName="AnnualCharges" />
+                <ScalarProperty Name="ProjectFee" ColumnName="ProjectFee" />
+                <ScalarProperty Name="LabFee" ColumnName="LabFee" />
+                <ScalarProperty Name="RefreshmentAccFee" ColumnName="RefreshmentAccFee" />
+                <ScalarProperty Name="TutionFee" ColumnName="TutionFee" />
+                <ScalarProperty Name="ExaminationFee" ColumnName="ExaminationFee" />
+                <ScalarProperty Name="AdmissionFee" ColumnName="AdmissionFee" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maintainences">
+            <EntityTypeMapping TypeName="RAINBOWModel.Maintainence">
+              <MappingFragment StoreEntitySet="Maintainence">
+                <ScalarProperty Name="HomeNote" ColumnName="HomeNote" />
+                <ScalarProperty Name="isOffline" ColumnName="isOffline" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment_Details">
+            <EntityTypeMapping TypeName="RAINBOWModel.Payment_Detail">
+              <MappingFragment StoreEntitySet="Payment Details">
+                <ScalarProperty Name="isPaid" ColumnName="isPaid" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LeftfeesId" ColumnName="LeftfeesId" />
+                <ScalarProperty Name="LeftFeesAmount" ColumnName="LeftFeesAmount" />
+                <ScalarProperty Name="ModeOfPayment" ColumnName="ModeOfPayment" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="RAINBOWModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="MothersName" ColumnName="MothersName" />
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AdmissionNo" ColumnName="AdmissionNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RAINBOWModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

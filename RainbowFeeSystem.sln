@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RainbowFeeSystem", "RainbowFeeSystem\RainbowFeeSystem.csproj", "{B66B426F-359A-4647-9DB4-B65B9F0612BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLinkLayer", "Data Link Layer\DataLinkLayer.csproj", "{5A014087-095F-4ED0-AD9A-0C6257B6F227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationLayer", "CommunicationLayer\CommunicationLayer.csproj", "{064B53C6-7314-47A3-8F97-C347E7E2E057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{94780DC1-21D3-409D-AA90-7DF6E6F80CE1}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://mayankan.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BusinessLogicLayer\\BusinessLogicLayer.csproj
+		SccProjectName1 = BusinessLogicLayer
+		SccLocalPath1 = BusinessLogicLayer
+		SccProjectUniqueName2 = CommunicationLayer\\CommunicationLayer.csproj
+		SccProjectName2 = CommunicationLayer
+		SccLocalPath2 = CommunicationLayer
+		SccProjectUniqueName3 = Data\u0020Link\u0020Layer\\DataLinkLayer.csproj
+		SccProjectName3 = Data\u0020Link\u0020Layer
+		SccLocalPath3 = Data\u0020Link\u0020Layer
+		SccProjectUniqueName4 = RainbowFeeSystem\\RainbowFeeSystem.csproj
+		SccProjectName4 = RainbowFeeSystem
+		SccLocalPath4 = RainbowFeeSystem
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B66B426F-359A-4647-9DB4-B65B9F0612BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66B426F-359A-4647-9DB4-B65B9F0612BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66B426F-359A-4647-9DB4-B65B9F0612BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66B426F-359A-4647-9DB4-B65B9F0612BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A014087-095F-4ED0-AD9A-0C6257B6F227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A014087-095F-4ED0-AD9A-0C6257B6F227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A014087-095F-4ED0-AD9A-0C6257B6F227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A014087-095F-4ED0-AD9A-0C6257B6F227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064B53C6-7314-47A3-8F97-C347E7E2E057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064B53C6-7314-47A3-8F97-C347E7E2E057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064B53C6-7314-47A3-8F97-C347E7E2E057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064B53C6-7314-47A3-8F97-C347E7E2E057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94780DC1-21D3-409D-AA90-7DF6E6F80CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94780DC1-21D3-409D-AA90-7DF6E6F80CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94780DC1-21D3-409D-AA90-7DF6E6F80CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94780DC1-21D3-409D-AA90-7DF6E6F80CE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
